@@ -3,9 +3,17 @@
 public class Account
 {
     private decimal _balance = 5000M;
-    public void Deposit(TransactionValueTypes.Deposit amountToDeposit)
+    private ICalculateBonusesForDeposits _bonusCalculator;
+
+    public Account(ICalculateBonusesForDeposits bonusCalculator)
     {
-        _balance += amountToDeposit.Value;
+        _bonusCalculator = bonusCalculator;
+    }
+
+    public virtual void Deposit(TransactionValueTypes.Deposit deposit)
+    {
+        decimal bonus = _bonusCalculator.CalculateBonusFor(this, deposit);
+        _balance += deposit.Value + bonus;
     }
 
     public decimal GetBalance()
@@ -14,11 +22,11 @@ public class Account
     }
 
     // "Primitive Obsession" -
-    public void Withdraw(TransactionValueTypes.Withdrawal amountToWithdraw)
+    public void Withdraw(TransactionValueTypes.Withdrawal withdraw)
     {
-        GuardHasSufficientFunds(amountToWithdraw.Value);
+        GuardHasSufficientFunds(withdraw.Value);
 
-        _balance -= amountToWithdraw.Value; // The important business!
+        _balance -= withdraw.Value; // The important business!
     }
 
 
