@@ -1,8 +1,9 @@
 ﻿using Banking.Domain;
 
 namespace Banking.UnitTests.BankAccount;
-public class MakingWithdrawls
+public class MakingWithdrawal
 {
+
     [Theory]
     [InlineData(82.23)]
     [InlineData(200)]
@@ -11,12 +12,11 @@ public class MakingWithdrawls
         // Given
         var account = new Account();
         var openingBalance = account.GetBalance();
-        //var amountToWithdraw = 80.23M;
+        var withdraw = TransactionValueTypes.Withdrawal.CreateFrom(amountToWithdraw);
 
         // When
-        account.Withdraw(amountToWithdraw);
+        account.Withdraw(withdraw);
 
-        // Then
         Assert.Equal(openingBalance - amountToWithdraw, account.GetBalance());
     }
 
@@ -24,8 +24,9 @@ public class MakingWithdrawls
     public void CanTakeEntireBalance()
     {
         var account = new Account();
+        var withdraw = TransactionValueTypes.Withdrawal.CreateFrom(account.GetBalance());
 
-        account.Withdraw(account.GetBalance());
+        account.Withdraw(withdraw);
 
         Assert.Equal(0, account.GetBalance());
     }
