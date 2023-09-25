@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi", "Busines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi.IntegrationTests", "BusinessClockApi.IntegrationTests\BusinessClockApi.IntegrationTests.csproj", "{C825ABDF-89E7-46C9-AE98-EF326FFC5FF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi.UnitTests", "BusinessClockApi.UnitTests\BusinessClockApi.UnitTests.csproj", "{90FCA58B-8BE0-4B1C-AF56-F2D888422FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C825ABDF-89E7-46C9-AE98-EF326FFC5FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C825ABDF-89E7-46C9-AE98-EF326FFC5FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C825ABDF-89E7-46C9-AE98-EF326FFC5FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FCA58B-8BE0-4B1C-AF56-F2D888422FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FCA58B-8BE0-4B1C-AF56-F2D888422FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FCA58B-8BE0-4B1C-AF56-F2D888422FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FCA58B-8BE0-4B1C-AF56-F2D888422FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
