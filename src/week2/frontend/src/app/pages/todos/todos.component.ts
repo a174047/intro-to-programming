@@ -6,6 +6,9 @@ import {
   TodoItem,
   TodosDataService,
 } from "src/app/services/todos-data.service";
+import { Store } from "@ngrx/store";
+import { todosFeature } from "./state";
+import { TodosEvents } from "./state/todos.actions";
 
 @Component({
   standalone: true,
@@ -25,15 +28,17 @@ import {
   imports: [CommonModule, TodoEntryComponent, TodoListComponent],
 })
 export class TodosComponent {
-  todoItems = this.service.getItems();
+  todoItems = this.store.selectSignal(todosFeature.selectTodoList);
   sayThis = "Demo Header";
-  constructor(private readonly service: TodosDataService) {}
+  constructor(private readonly store: Store) {
+    store.dispatch(TodosEvents.entered());
+  }
 
   timeToAddAnItem(description: string) {
-    this.service.addItem(description);
+    this.store.dispatch(TodosEvents.todoItemAdded({ description }));
   }
 
   timeToMarkItemComplete(item: TodoItem) {
-    this.service.markItemComplete(item);
+    //this.service.markItemComplete(item);
   }
 }

@@ -8,6 +8,9 @@ import { provideStoreDevtools } from "@ngrx/store-devtools";
 import { counterFeature } from "./pages/counter/state";
 import { CounterEffects } from "./pages/counter/state/counter.effects";
 import { provideEffects } from "@ngrx/effects";
+import { todosFeature } from "./pages/todos/state";
+import { provideHttpClient } from "@angular/common/http";
+import { TodosEffects } from "./pages/todos/state/todos.effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideStore(reducers),
     provideStoreDevtools({ autoPause: true, trace: true }),
     provideState(counterFeature),
-    provideEffects([CounterEffects]),
+    provideState(todosFeature),
+    provideEffects([CounterEffects, TodosEffects]),
+    provideHttpClient(),
   ],
 };

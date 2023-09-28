@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map, tap } from "rxjs";
+import { map } from "rxjs";
 import { CounterDocuments, CounterEvents } from "./counter.actions";
 import { counterFeature } from ".";
 
