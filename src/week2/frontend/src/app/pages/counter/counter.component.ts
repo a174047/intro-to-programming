@@ -36,7 +36,9 @@ export class CounterComponent {
     counterFeature.selectResetShouldBeDisabled
   );
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) {
+    store.dispatch(CounterEvents.counterEntered());
+  }
 
   increment() {
     this.store.dispatch(CounterEvents.incrementClicked());

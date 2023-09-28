@@ -6,6 +6,8 @@ import { provideState, provideStore } from "@ngrx/store";
 import { reducers } from "./state";
 import { provideStoreDevtools } from "@ngrx/store-devtools";
 import { counterFeature } from "./pages/counter/state";
+import { CounterEffects } from "./pages/counter/state/counter.effects";
+import { provideEffects } from "@ngrx/effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(reducers),
     provideStoreDevtools({ autoPause: true, trace: true }),
     provideState(counterFeature),
+    provideEffects([CounterEffects]),
   ],
 };
