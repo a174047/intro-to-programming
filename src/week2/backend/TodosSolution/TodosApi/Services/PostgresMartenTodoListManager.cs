@@ -32,4 +32,11 @@ public class PostgresMartenTodoListManager : IManageTodoLists
 
         return new TodoListSummaryResponse { Items = items };
     }
+
+    public async Task MarkItemCompletedAsync(TodoItemResponse request)
+    {
+        request.Completed = true;
+        _session.Store(request);
+        await _session.SaveChangesAsync();
+    }
 }

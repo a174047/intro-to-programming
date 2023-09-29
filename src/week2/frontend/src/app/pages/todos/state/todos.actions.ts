@@ -6,6 +6,8 @@ export const TodosEvents = createActionGroup({
   events: {
     Entered: emptyProps(),
     "Todo Item Added": props<{ description: string }>(),
+    "Todo Item Completed": props<{ payload: TodoItem }>(),
+    "Todo Item Failed Completed": props<{ payload: TodoItem }>(),
   },
 });
 
